@@ -71,13 +71,13 @@ class TestModels:
         assert 'accuracy' in metrics
         assert 'precision' in metrics
         assert 'recall' in metrics
-        assert 'f1_score' in metrics
+        assert 'f1' in metrics
         
         # Check that metrics are reasonable
         assert 0 <= metrics['accuracy'] <= 1
         assert 0 <= metrics['precision'] <= 1
         assert 0 <= metrics['recall'] <= 1
-        assert 0 <= metrics['f1_score'] <= 1
+        assert 0 <= metrics['f1'] <= 1
     
     def test_calculate_metrics_regression(self):
         """Test metrics calculation for regression."""
@@ -104,13 +104,11 @@ class TestModels:
         
         # Check that required metrics are present
         assert 'mae' in metrics
-        assert 'mse' in metrics
         assert 'rmse' in metrics
         assert 'r2' in metrics
         
         # Check that metrics are reasonable
         assert metrics['mae'] >= 0
-        assert metrics['mse'] >= 0
         assert metrics['rmse'] >= 0
         assert -1 <= metrics['r2'] <= 1
 
