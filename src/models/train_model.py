@@ -269,15 +269,26 @@ def calculate_metrics(pipeline: Pipeline, X: np.ndarray, y: np.ndarray, task: st
     
     if task == 'classification':
         # Classification metrics
-        y_proba = pipeline.predict_proba(X)[:, 1] if hasattr(pipeline, 'predict_proba') else None
+        y_proba = None
+        if hasattr(pipeline, 'predict_proba'):
+            proba = pipeline.predict_proba(X)
+            # Handle binary classification (use positive class probability)
+            if proba.shape[1] == 2:
+                y_proba = proba[:, 1]
+            else:
+                y_proba = proba
         
         metrics['accuracy'] = accuracy_score(y, y_pred)
         metrics['precision'], metrics['recall'], metrics['f1'], _ = precision_recall_fscore_support(
             y, y_pred, average='binary', zero_division=0
         )
         
-        if y_proba is not None:
-            metrics['roc_auc'] = roc_auc_score(y, y_proba)
+        if y_proba is not None and len(y_proba.shape) == 1:
+            try:
+                metrics['roc_auc'] = roc_auc_score(y, y_proba)
+            except ValueError:
+                # Skip ROC AUC if only one class present
+                pass
         
         # Classification report
         metrics['classification_report'] = classification_report(y, y_pred, output_dict=True)
