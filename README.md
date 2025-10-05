@@ -6,7 +6,7 @@ A reproducible pipeline for downloading NASA satellite vegetation data (MODIS/VI
 
 BloomWatch provides an end-to-end solution for vegetation bloom detection and prediction using satellite data. The pipeline includes:
 
-- **Data Ingestion**: Google Earth Engine (preferred) and NASA AppEEARS (alternate)
+- **Data Ingestion**: NASA AppEEARS for satellite data
 - **Preprocessing**: NDVI time-series cleaning, smoothing, and resampling
 - **Labeling**: Automatic bloom onset detection using change-point analysis
 - **ML Pipeline**: Feature engineering, model training, and evaluation
@@ -17,8 +17,7 @@ BloomWatch provides an end-to-end solution for vegetation bloom detection and pr
 
 - Python 3.8+
 - Virtual environment (recommended)
-- Google Earth Engine account (for real data)
-- NASA AppEEARS account (alternative data source)
+- NASA AppEEARS account (for satellite data)
 
 ## Setup
 
@@ -37,10 +36,9 @@ cp .env.example .env
 # Edit .env with your credentials
 ```
 
-3. **Authenticate with Earth Engine:**
+3. **Set up NASA AppEEARS credentials:**
 ```bash
-earthengine authenticate --quiet
-# Or set EARTHENGINE_CREDENTIALS_JSON in .env
+# Set APPEEARS_USERNAME and APPEEARS_PASSWORD in .env
 ```
 
 ## Quick Start (Sample Mode)
@@ -56,12 +54,7 @@ streamlit run src/demo/streamlit_app.py
 
 ### 1. Fetch Data
 
-**Google Earth Engine:**
-```bash
-python src/data_fetch/fetch_gee.py --aoi "68,6,97,37" --start 2019-01-01 --end 2023-12-31 --product "MODIS/061/MOD13A2"
-```
-
-**AppEEARS (alternative):**
+**NASA AppEEARS:**
 ```bash
 python src/data_fetch/fetch_appeears.py --aoi "68,6,97,37" --start 2019-01-01 --end 2023-12-31
 ```
@@ -98,11 +91,6 @@ streamlit run src/demo/streamlit_app.py
 
 ## Authentication
 
-### Google Earth Engine
-1. Sign up at [earthengine.google.com](https://earthengine.google.com)
-2. Run `earthengine authenticate --quiet`
-3. Or set `EARTHENGINE_CREDENTIALS_JSON` in `.env` to point to service account JSON
-
 ### NASA AppEEARS
 1. Create account at [appeears.earthdatacloud.nasa.gov](https://appeears.earthdatacloud.nasa.gov)
 2. Set `APPEEARS_USERNAME` and `APPEEARS_PASSWORD` in `.env`
@@ -125,6 +113,10 @@ streamlit run src/demo/streamlit_app.py
 ```bash
 pytest tests/
 ```
+
+## Contributors
+
+- **@RitwikaaBanerjee** - NASA data collection and API handling
 
 ## License
 
