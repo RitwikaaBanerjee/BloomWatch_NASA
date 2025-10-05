@@ -33,9 +33,9 @@ venv.bak/
 .env.local
 .env.*.local
 
-# Data directories
+# Data directories (but not source code)
 data/
-models/
+/models/
 reports/
 
 # Credentials
