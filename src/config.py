@@ -24,7 +24,7 @@ for directory in [DATA_RAW_DIR, DATA_PROCESSED_DIR, MODEL_DIR, REPORTS_DIR]:
 
 # API settings
 API_HOST = os.getenv('API_HOST', '127.0.0.1')
-API_PORT = int(os.getenv('API_PORT', '8001'))
+API_PORT = int(os.getenv('API_PORT', '8000'))
 
 # Model settings
 DEFAULT_MODEL_TYPE = os.getenv('DEFAULT_MODEL_TYPE', 'randomforest')

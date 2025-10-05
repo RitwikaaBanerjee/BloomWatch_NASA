@@ -116,7 +116,11 @@ pytest tests/
 
 ## Contributors
 
-- **@prahants** 
+- **@ritwikaabanerjee** nasa data API , preprocessing and evaluation  
+- **@prahants**  labeling, feature engineering, and model training    
+
+
+
 
 ## License
 
