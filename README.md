@@ -23,7 +23,7 @@ BloomWatch provides an end-to-end solution for vegetation bloom detection and pr
 
 1. **Clone and setup environment:**
 ```bash
-git clone <repository-url>
+git clone https://github.com/RitwikaaBanerjee/BloomWatch_NASA
 cd NASA
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
@@ -116,7 +116,7 @@ pytest tests/
 
 ## Contributors
 
-- **@RitwikaaBanerjee** - NASA data collection and API handling
+- **@prahants** 
 
 ## License
 
