@@ -4,7 +4,7 @@ A reproducible pipeline for downloading NASA satellite vegetation data (MODIS/VI
 
 ## Overview
 
-BloomWatch provides an end-to-end solution for vegetation bloom detection and prediction using satellite data. The pipeline includes:
+BloomWatch provides an end-to-end solution for vegetation bloom detection and prediction using satellite data. This project helps scientists and researchers monitor vegetation cycles using NASA's satellite imagery data. The pipeline includes:
 
 - **Data Ingestion**: NASA AppEEARS for satellite data
 - **Preprocessing**: NDVI time-series cleaning, smoothing, and resampling
